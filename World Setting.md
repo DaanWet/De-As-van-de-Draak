@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 # Setting
 Honderd jaar geleden werd het koninkrijk verwoest door een catastrofale aanval van meerdere draken. Steden brandden, wegen verzandden, en koningen vielen. Sindsdien leven de overlevenden in kleine, ommuurde dorpen, afgesneden van elkaar door gevaarlijke wildernis en ruïnes. Maar nu, voor het eerst in generaties, beweren reizigers dat sommige oude wegen weer bruikbaar zijn en dat er in de ruïnes onverwachte lichtsignalen te zien zijn. Sommige dorpsleiders twijfelen om te onderzoeken wie daar buiten overleeft en of het tijd is om het rijk opnieuw te verbinden, anderen sluiten nog harder hun poorten.
 

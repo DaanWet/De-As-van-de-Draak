@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 # Session 0 Checklist
 ## Verwachtingen
 ### Hoe vaak Role Playing & hoe intensief

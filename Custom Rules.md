@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 # Character Creation Rules
 ## Ability Scores
 ### Rollen
@@ -9,6 +13,10 @@ Zolang iedereen maximaal 10 punten verschilt op hun opgetelde ability scores is 
 Tasha's Ability score rule
 
 ## Races & background
+We blijven bij de classes en 
+
+
+
 # In-Game Rules
 ## Surprised
 Surprised creatures hebben disadvantage op initiative
