@@ -1,0 +1,64 @@
+name: Deploy Quartz to GitHub Pages
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Vault (Private)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Clone Quartz
+        run: git clone https://github.com/jackyzha0/quartz.git quartz-build
+
+      - name: Filter and Copy Public Notes
+        run: |
+          mkdir -p quartz-build/content
+          # Zoek alle .md bestanden met 'publish: true' en kopieer ze naar de quartz content map
+          # We behouden de mappenstructuur voor de links
+          grep -lR "publish: true" . --include="*.md" | while read -r file; do
+            dest="quartz-build/content/$file"
+            mkdir -p "$(dirname "$dest")"
+            cp "$file" "$dest"
+          done
+          
+          # Optioneel: Kopieer ook je afbeeldingen/attachments map als je die hebt
+          if [ -d "attachments" ]; then
+            cp -r attachments/* quartz-build/content/
+          fi
+
+      - name: Install Dependencies & Build
+        run: |
+          cd quartz-build
+          npm install
+          npx quartz build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: quartz-build/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
